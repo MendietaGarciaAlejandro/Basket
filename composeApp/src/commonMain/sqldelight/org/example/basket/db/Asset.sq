@@ -1,0 +1,40 @@
+CREATE TABLE ActivoEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    simbolo TEXT NOT NULL,
+    nombre TEXT NOT NULL,
+    precio_actual REAL NOT NULL,
+    cambio_porcentaje_24h REAL NOT NULL,
+    maximo_24h REAL,
+    minimo_24h REAL,
+    capitalizacion_mercado REAL,
+    volumen_24h REAL,
+    es_favorito INTEGER AS Boolean DEFAULT 0
+);
+
+obtenerTodos:
+SELECT *
+FROM ActivoEntity;
+
+obtenerFavoritos:
+SELECT *
+FROM ActivoEntity
+WHERE es_favorito = 1;
+
+obtenerPorId:
+SELECT *
+FROM ActivoEntity
+WHERE id = ?;
+
+insertarActivo:
+INSERT OR REPLACE INTO ActivoEntity(
+    id, simbolo, nombre, precio_actual, cambio_porcentaje_24h,
+    maximo_24h, minimo_24h, capitalizacion_mercado, volumen_24h, es_favorito
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+actualizarFavorito:
+UPDATE ActivoEntity
+SET es_favorito = ?
+WHERE id = ?;
+
+borrarTodos:
+DELETE FROM ActivoEntity;
