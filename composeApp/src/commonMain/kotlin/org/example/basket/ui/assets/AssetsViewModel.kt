@@ -1,4 +1,4 @@
-package org.example.basket.ui.activos
+package org.example.basket.ui.assets
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
