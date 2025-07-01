@@ -1,5 +1,4 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
@@ -10,14 +9,14 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
-    id("app.cash.sqldelight") version "2.0.1"
+    alias(libs.plugins.sqldelight)
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.21"
 }
 
 kotlin {
     androidTarget {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     
@@ -49,7 +48,8 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation(libs.sqlite.driver)
+            implementation(libs.sqldelight.android.driver)
+            implementation(libs.koin.android) // Nueva dependencia
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -70,8 +70,8 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
 
             // SQLDelight
-            implementation(libs.runtime)
-            implementation(libs.coroutines.extensions)
+            implementation(libs.sqldelight.runtime)
+            implementation(libs.sqldelight.coroutines)
 
             // Serialization
             implementation(libs.kotlinx.serialization.json)
@@ -86,6 +86,14 @@ kotlin {
             implementation(libs.kotlinx.coroutinesSwing)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqldelight.sqlite.driver)
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("BasketDatabase") {
+            packageName.set("org.example.basket.db")
         }
     }
 }
@@ -113,8 +121,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 

@@ -8,7 +8,7 @@ CREATE TABLE ActivoEntity (
     minimo_24h REAL,
     capitalizacion_mercado REAL,
     volumen_24h REAL,
-    es_favorito INTEGER AS Boolean DEFAULT 0
+    es_favorito INTEGER NOT NULL DEFAULT 0
 );
 
 obtenerTodos:
