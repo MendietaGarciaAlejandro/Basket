@@ -76,7 +76,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ## 👥 Autores
 
-- **Alejandro Mendieta** - *Trabajo Inicial* - [TuUsuarioGitHub](https://github.com/MendietaGarciaAlejandro)
+- **Alejandro Mendieta** - *Trabajo Inicial* - [MendietaGarciaAlejandro](https://github.com/MendietaGarciaAlejandro)
 
 ## 🙏 Agradecimientos
 
