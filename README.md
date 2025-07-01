@@ -4,7 +4,7 @@ Basket es una aplicación de seguimiento de activos financieros desarrollada con
 
 ## 🌟 Características
 
-- 📱 Aplicación multiplataforma (Android, Desktop, Web)
+- 📱 Aplicación multiplataforma (Android, Desktop)
 - 💰 Seguimiento en tiempo real de precios de criptomonedas
 - ⭐ Gestión de activos favoritos
 - 📊 Visualización de datos de mercado
@@ -33,14 +33,13 @@ El proyecto sigue los principios de Clean Architecture y está organizado en las
     - `di`: Configuración de inyección de dependencias
   - `androidMain`: Implementación específica para Android
   - `desktopMain`: Implementación específica para Desktop
-  - `wasmJsMain`: Implementación específica para Web
 
 ## 🚀 Inicio Rápido
 
 ### Requisitos Previos
 
 - Android Studio Arctic Fox o superior
-- JDK 11 o superior
+- JDK 17 o superior
 - Kotlin 1.9.0 o superior
 
 ### Ejecutar el Proyecto
@@ -53,11 +52,6 @@ El proyecto sigue los principios de Clean Architecture y está organizado en las
 **Desktop**:
 ```bash
 ./gradlew :composeApp:run
-```
-
-**Web**:
-```bash
-./gradlew :composeApp:wasmJsBrowserDevelopmentRun
 ```
 
 ## 🤝 Contribuir
